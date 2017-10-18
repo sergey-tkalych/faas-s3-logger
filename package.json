@@ -1,0 +1,25 @@
+{
+  "name": "faas-s3-logger",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "author": "Sergey Tkalych",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "tsc": "tsc",
+    "dev": "rm -rf dist && tsc --watch"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.135.0",
+    "serverless-dynamodb-local": "^0.2.25",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "0.0.17",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node": "^8.0.44",
+    "@types/uuid": "^3.4.3",
+    "serverless-offline": "^3.16.0",
+    "typescript": "^2.5.3"
+  }
+}
