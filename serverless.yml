@@ -30,15 +30,16 @@ provider:
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 functions:
-  objectCreated:
-    handler: dist/log-handler.objectCreated
-    description: Log S3 ObjectCreated event
+  createOnS3Put:
+    handler: dist/handler.createOnS3Put
+    description: Create log on S3 put object
     events:
       - s3:
           bucket: ${self:custom.bucketName}
           event: s3:ObjectCreated:*
   list:
-    handler: dist/log-handler.list
+    handler: dist/handler.list
+    description: Fetch logs
     events:
       - http:
           path: logs
@@ -74,3 +75,4 @@ package:
     - .vscode/**
     - package*.json
     - tsconfig.json
+    - test/**
