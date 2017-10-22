@@ -13,7 +13,7 @@ export default class Logger {
   }
 
   create(item: string): Promise<ILog> {
-    const log = new Log(item);
+    const log = new Log(item, 'created');
     const params = {
       TableName: this.TableName,
       Item: log,

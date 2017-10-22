@@ -4,11 +4,13 @@ import { ILog } from '../interfaces/log.interface';
 export class Log implements ILog{
   id: string;
   item: string;
+  event: string;
   createdAt: number;
 
-  constructor(item: string){
+  constructor(item: string, event: string){
     this.id = uuid.v1();
     this.item = item;
+    this.event = event;
     this.createdAt = new Date().getTime();
   }
 
