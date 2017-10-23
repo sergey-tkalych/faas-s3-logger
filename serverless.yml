@@ -18,6 +18,8 @@ provider:
   runtime: nodejs6.10
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  apiKeys:
+    - LOGS_API_KEY
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -45,6 +47,7 @@ functions:
           path: logs
           method: get
           cors: true
+          private: true
 
 resources:
   Resources:

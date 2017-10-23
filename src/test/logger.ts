@@ -7,8 +7,9 @@ describe('Logger', () => {
   describe('create', () => {
     it('should create log', (done) => {
       const item = 'image.png';
+      const event = 'ObjectCreated:Put';
 
-      logger.create(item)
+      logger.create(item, event)
         .then(log => {
           assert.equal(item, log.item);
           assert.equal(true, log.hasOwnProperty('id'));

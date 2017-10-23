@@ -15,6 +15,6 @@ export class Log implements ILog{
   }
 
   print(){
-   console.log(`[${this.createdAt}]: ${this.item}`);
+   console.log(`timestamp: [${this.createdAt}], item: [${this.item}], event: [${this.event}]`);
   }
 }

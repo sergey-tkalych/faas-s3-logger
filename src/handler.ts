@@ -4,10 +4,11 @@ import Logger from './modules/logger';
 const logger = new Logger();
 
 exports.createOnS3Put = (event: any, context: Context, callback: Callback) => {
-  logger
-    .create(event.Records[0].s3.object.key)
+  logger //Todo Save all records
+    .create(event.Records[0].s3.object.key, event.Records[0].eventName)
     .then(log => {
       log.print();
+
       const response = {
         statusCode: 200,
         body: JSON.stringify(log),
@@ -15,7 +16,7 @@ exports.createOnS3Put = (event: any, context: Context, callback: Callback) => {
       callback(null, response);
     })
     .catch(error => {
-      callback(null, {
+      callback(null, { //Todo Create response module
         statusCode: error.statusCode || 501,
         headers: { 'Content-Type': 'text/plain' },
         body: 'Couldn\'t create the log item.',

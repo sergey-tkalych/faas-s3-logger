@@ -12,8 +12,8 @@ export default class Logger {
     this.TableName = process.env.DYNAMODB_TABLE;
   }
 
-  create(item: string): Promise<ILog> {
-    const log = new Log(item, 'created');
+  create(item: string, event: string): Promise<ILog> {
+    const log = new Log(item, event);
     const params = {
       TableName: this.TableName,
       Item: log,
